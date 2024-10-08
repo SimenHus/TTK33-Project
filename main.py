@@ -7,7 +7,7 @@ from apriltags.estimation import estimate_pose, AprilTagMap
 
 import argparse
 
-
+shit_var = None
 def main() -> None:
     # Parse runtime arguments
     parser = argparse.ArgumentParser("simple_example")
