@@ -32,10 +32,13 @@ def estimate_pose(detections: list[AprilTagDetection], pose_estimator: AprilTagP
 
 
         ID = detection.getId()
-        if ID in map.landmarks:
-            ownship = map.landmarks[ID]@pose.inv
-            detected_landmarks[ID] = pose
-        if ID not in map.landmarks: new_landmarks[ID] = pose
+
+        if ID == 0: ownship = pose.inv # Get ownship as the inverse of tag 0 transformation
+
+        # if ID in map.landmarks:
+        #     ownship = map.landmarks[ID]@pose.inv
+        #     detected_landmarks[ID] = pose
+        # if ID not in map.landmarks: new_landmarks[ID] = pose
 
     # Detected new landmarks and able to relate to known ones
     if len(detected_landmarks) > 0 and len(new_landmarks) > 0: map.add_landmarks(new_landmarks, detected_landmarks)
